@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <title>{% block title %}M@ Musique{% endblock %}</title>
         <link rel="stylesheet" href="https://bootswatch.com/4/lumen/bootstrap.min.css">
+        <link rel="stylesheet" href="{{asset('css/app.css')}} ">
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
         {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
         {% block stylesheets %}
@@ -27,7 +28,8 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Gestion des artistes</a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">Liste des artistes</a>
+                        <a class="dropdown-item" href="{{path('artistes')}} ">Liste des artistes</a>
+                        <a class="dropdown-item" href="{{path('ficheArtiste',{'id':2})}} ">Fiche test artiste artistes</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="#">Ajouter un artiste</a>
                     </div>
