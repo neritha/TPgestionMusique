@@ -1,66 +1,62 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Fiche l'album{% endblock %}
+{% block title %}Fiche de l'album{% endblock %}
 
 {% block body %}
     <h1 clas="pt-2 text-center">Fiche de l'album</h1>
     <hr>
-
-    <div class="row pt-2">
-
-            <div class="row card m-1">
-                <h3 class="card-header"> {{leAlbum.nom}}</h3>
-                <div class="row">
-                    <div class="col-3 d-flex align-items-center mx-auto">
-                        <img class="avatar mx-auto d-block" style="height: auto; width: 200px; display: bloc;" src="{{leAlbum.image}}" alt="">
-                    </div>
-
-                    <div class="col">
-                        <div class="card-body">
-                            <h5 class="card-title"> 
-                                <a href="" class="badge badge-success"> {{leAlbum.artiste.nom}} </a>
-                            </h5>
-                            <p class="card-text"> {{leAlbum.date}} </p>
-                        </div>
-                            <ul class="list-group list-group-flush">
-
-                                <li class="list-group-item">
-                                    {% for leStyle in leAlbum.styles %}
-                                        <span class="badge" style="bacground-color:{{leStyle.couleur}};"> {{leStyle.nom}} </span>
-                                    {% endfor %}
-                                </li>
-
-                                {% set nb = leAlbum.morceaux|length %}
-
-                                <li class="list-group-item">
-                                    {{nb}} {% if nb>1 %} morceaux {% else %} morceau {% endif %}
-                                </li>                                
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+    <div class="row card m-1">
+        <h3 class="card-header"> {{leAlbum.nom}}</h3>
+        <div class="row">
+            <div class="col-3 d-flex align-items-center mx-auto">
+                <img class="avatar mx-auto d-block" style="height: auto; width: 200px; display: bloc;" src="{{leAlbum.image}}" alt="">
             </div>
 
-        <table class="table table-hover mx-auto">
-            <thead>
-                <tr>
-                    <th scope="col-3">Piste</th>
-                    <th scope="col-5">Titre</th>
-                    <th scope="col-1">Durée</th>
-                    <th scope="col-3">Note</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for leMorceau in leAlbum.morceaux %}
-                    <tr class="table-light">
-                        <td scop="row">{{leMorceau.piste}} vidéo 7 18:25</td>
-                        <td>{{leMorceau.titre}} </td>
-                        <td>{{leMorceau.duree|length}}</td>
-                        <td> </td> 
-                    </tr>
-                {% endfor %}
+            <div class="col">
+                <div class="card-body">
+                    <h5 class="card-title"> 
+                        <a href=" {{path('ficheArtiste', {'id':leAlbum.artiste.id})}} " class="badge badge-success"> {{leAlbum.artiste.nom}} </a>
+                    </h5>
+                    <p class="card-text"> {{leAlbum.date}} </p>
+                </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            {% for leStyle in leAlbum.styles %}
+                                <span class="badge" style="bacground-color:{{leStyle.couleur}};"> {{leStyle.nom}} </span>
+                            {% endfor %}
+                        </li>
 
-            </tbody>
-        </table>
-    </div>
+                        {% set nb = leAlbum.morceaux|length %}
+
+                        <li class="list-group-item">
+                            {{nb}} {% if nb>1 %} morceaux {% else %} morceau {% endif %}
+                        </li>                                
+                    </ul>
+                </div>
+            </div>
+        </div>
+    
+
+    <table class="table table-hover mx-auto">
+        <thead>
+            <tr>
+                <th scope="col-3">Piste</th>
+                <th scope="col-5">Titre</th>
+                <th scope="col-1">Durée</th>
+                <th scope="col-3">Note</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for leMorceau in leAlbum.morceaux %}
+                <tr class="table-light">
+                    <td>{{leMorceau.piste}}</td>
+                    <td>{{leMorceau.titre}}</td>
+                    <td>{{leMorceau.duree}}</td>
+                    <td>a</td>
+                    
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
 {% endblock %}
