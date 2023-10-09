@@ -39,6 +39,22 @@ class ArtisteRepository extends ServiceEntityRepository
         }
     }
 
+
+    /**
+     * @return Artiste[] returns an array of Artiste objects
+     */
+
+     public function listeArtisteComplete ()
+     {
+         return $this->createQueryBuilder('art')
+             ->select('art','a') 
+             ->innerJoin('art.albums', 'a')
+             ->orderBy('art.nom','ASC')
+             ->getQuery()
+             ->getResult()
+         ;
+     }
+
 //    /**
 //     * @return Artiste[] Returns an array of Artiste objects
 //     */
