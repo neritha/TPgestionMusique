@@ -45,7 +45,7 @@ class ArtisteRepository extends ServiceEntityRepository
      * @return Query returns an array of Artiste objects
      */
 
-    public function listeArtisteComplete (): ?Query
+    public function listeArtisteComplete (): ?Query //on utilise que la paginé pour tout le temps
      {
          return $this->createQueryBuilder('art')
              ->select('art','a') 

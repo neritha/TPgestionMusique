@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion des artistes{% endblock %}
+
+{% block body %}
+<h1 clas="pt-2 text-center">Gestion des artistes</h1>
+<a href="" class="btn btn-info">Ajouter un artiste</a>
+<hr>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+            <th scope="col-1">Image</th>
+            <th scope="col-2">Nom</th>
+            <th scope="col-7">Detail</th>
+            <th scope="col-2">Action</th>
+            </tr>
+        </thead>
+
+        {% for leArtiste in lesArtistes %}
+        {% set nbAlbums = leArtiste.albums|length %}
+
+        <tbody>
+            <tr class="table-secondary">
+                <td class="col-1"><img class="avatar mx-auto d-block" style="height: auto; width: 50px; display: bloc;" src="{{leArtiste.image}}" alt=""></td>
+                <td class="col-2"> {{leArtiste.nom}} </td>
+                <td class="col-7">
+                    <p class="d-flex flex-row">
+                        <span class="align-self-center badge badge-success"> {{nbAlbums}}{% if nbAlbums > 1 %} Albums {% else %} Album {% endif %} </span>
+                        <span class="align-self-center mx-3"> {% if leArtiste.type == 0 %} Artiste solo {% else %} Groupe{% endif %} </span>
+                        <span class="align-self-center ml-auto"> <a target="_blank" href="{{leArtiste.site}}">Site web</a> </span>
+                    </p>
+                    <p>
+                        {{leArtiste.description|slice(0,100)|raw}} ...
+                    </p>
+                </td>
+                <td class="col-2">
+                    <a href="" class="btn btn-outline-success"><i class="fas fa-pencil-alt"></i></a>
+                    <a type="button" class="btn btn-outline-warning" data-toggle="modalSimple" data-target="#exampleModal"><i class="fa-solid fa-trash"></i></a>
+                    <!--<a href="" class="btn btn-outline-danger">OK</a>-->
+                </td>
+            </tr>
+
+        {% endfor %}
+
+        </tbody>
+    </table>
+    <div class="navigation mx-auto pt-4">
+        {{ knp_pagination_render(lesArtistes) }}
+    </div>
+    
+{% endblock %}

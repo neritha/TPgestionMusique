@@ -23,8 +23,8 @@
                 <p class="card-text">{{leArtiste.description|slice(0,200)|raw}} ...</p>
             </div>
             <ul class="list-group list-group-flush">
-                <li class="list-group-item">{% if leArtiste.type == 0 %} Artiste solo {% else %} Groupe{% endif %} </li>
-                <li class="list-group-item"><a target="_blank" href="{{leArtiste.site}}">Site web</a> </li>
+                <li class="list-group-item"> {% if leArtiste.type == 0 %} Artiste solo {% else %} Groupe{% endif %} </li>
+                <li class="list-group-item"> <a target="_blank" href="{{leArtiste.site}}">Site web</a> </li>
             </ul>
         </div>
     </div>
