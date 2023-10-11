@@ -45,6 +45,7 @@ class ArtisteController extends AbstractController
         { 
             $manager->persist($artiste);
             $manager->flush();
+            $this->addFlash("success","l'artiste à bien été ajouté"); //labelle, valeur
             return $this->redirectToRoute('admin_artistes');
         }
 
