@@ -3,13 +3,14 @@
 {% block title %}Fiche de l'album{% endblock %}
 
 {% block body %}
-    <h1 clas="pt-2 text-center">Fiche de l'album</h1>
+    <h1 class="pt-3 text-center">Fiche de l'album</h1>
     <hr>
+    <a href="{{path('albums')}}" class="btn btn-outline-primary">Revenir à la liste des albums</a>
     <div class="row card m-1">
         <h3 class="card-header"> {{leAlbum.nom}}</h3>
         <div class="row">
             <div class="col-3 d-flex align-items-center mx-auto">
-                <img class="avatar mx-auto d-block" style="height: auto; width: 100px; display: bloc;" src="{{leAlbum.image}}" alt="">
+                <img class="avatar mx-auto d-block" style="height: auto; width: 150px; display: bloc;" src="{{leAlbum.image}}" alt="">
             </div>
 
             <div class="col">

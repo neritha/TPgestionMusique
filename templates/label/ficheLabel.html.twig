@@ -3,10 +3,10 @@
 {% block title %}Fiche du label{% endblock %}
 
 {% block body %}
-<h1 clas="pt-2 text-center">Fiche du label</h1>
+<h1 class="pt-3 text-center">Fiche du label</h1>
 <hr>
 
-<a href="{{path('labels')}}" class="btn btn-info">Revenir à la liste des labels</a>
+<a href="{{path('labels')}}" class="btn btn-outline-primary">Revenir à la liste des labels</a>
 
 <div class="row pt-2">
     {% set nbAlbums = leLabel.albums|length %}
@@ -35,7 +35,7 @@
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item"><div class="badge badge-{{colorLab}}"> {{leLabel.type}} </div></li>
                             <li class="list-group-item">{{nbAlbums}}{% if nbAlbums > 1 %} Albums {% else %} Album {% endif %}</li>
-                            <li class="list-group-item">  <p class="card-text">{{leLabel.description|raw}} </p> </li>
+                            <li class="list-group-item">  <p class="card-text">{{leLabel.description|raw}} </p> </li> 
                         </ul>
                     </div>
                 </div>

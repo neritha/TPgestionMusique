@@ -3,8 +3,9 @@
 {% block title %}Fiche l'artiste{% endblock %}
 
 {% block body %}
-<h1 clas="pt-2 text-center">Fiche de l'artiste</h1>
+<h1 class="pt-3 text-center">Fiche de l'artiste</h1>
 <hr>
+<a href="{{path('artistes')}}" class="btn btn-outline-primary">Revenir à la liste des artistes</a>
 
 <div class="row pt-2">
     {% set nbAlbums = leArtiste.albums|length %}
