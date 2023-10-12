@@ -1,0 +1,55 @@
+<!--<div id="modalSimple" class="modal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Modal body text goes here.</p>
+      </div>
+      <div class="modal-footer">
+	      <a href="" id="bts-action" class="btn btn-primary">Je suis un btn</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>-->
+
+<div class="modal"id="modalSimple">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Modal body text goes here.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">ok</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close// video 19 23:27</button> 
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+    $("a[data-lien]").click(function(){
+      //on recup tout les éléments de la balise a
+      let lien=$(this).attr("data-lien");
+      let titre=$(this).attr("data-titre");
+      let message=$(this).attr("data-message");
+      let libelleBouton=$(this).attr("data-libelleBouton");
+      // on affecte les eleents à la modale
+      $("#btn-action").attr("href",lien);
+      $(".modal-title").text(titre);
+      $(".modal-body").text(message);
+      $("#btn-action").text(libelleBouton);
+    });
+</script>

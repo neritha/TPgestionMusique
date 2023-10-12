@@ -12,8 +12,6 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\DependencyInjection\Loader\Configurator\twig;
 
-
-
 class ArtisteController extends AbstractController
 {
 
