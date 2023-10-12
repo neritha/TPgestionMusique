@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des Labels{% endblock %}
+
+{% block body %}
+<h1 clas="pt-2 text-center">Liste des labels</h1>
+<hr>
+
+<div class="row pt-2">
+{% for leLabel in lesLabels %}
+    {% set nbAlbums = leLabel.albums|length %}
+    
+    {% if leLabel.type == "Majeur" %}
+        {% set colorLab = "success" %}
+    {% else %}
+        {% set colorLab = "danger" %}
+    {% endif %} 
+    
+
+
+    <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4">
+        <div class="row card m-1">
+            <h3 class="card-header"> <a href="{{path('ficheLabel',{'id': leLabel.id})}}">{{leLabel.nom}}</a></h3>
+
+            <div class="card-body">
+                <p class="card-text p-2">{{leLabel.description|slice(0,200)|raw}} ...</p>
+
+                <img class="mx-auto d-block" style="height: 100px; width: 100px; display: bloc;" src="{{leLabel.logo}}" alt="">
+
+                <p class="p-2">{{leLabel.annee}}</p>
+            </div>
+            
+            <div class="card-body">
+                
+            </div>
+            <ul class="list-group list-group-flush">
+
+                <li class="list-group-item"> <div class="badge badge-{{colorLab}}"> {{leLabel.type}} </div>
+                 </li>
+
+                <li class="list-group-item"> {{nbAlbums}}{% if nbAlbums > 1 %} Albums {% else %} Album {% endif %} </li>
+            </ul>
+        </div>
+    </div>
+
+{% endfor %}
+</div>
+
+{% endblock %}
