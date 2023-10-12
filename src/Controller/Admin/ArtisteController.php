@@ -33,10 +33,11 @@ class ArtisteController extends AbstractController
 
     /**
      * @Route("/admin/artiste/ajout", name="admin_artiste_ajout", methods={"GET","POST"})
-     * @Route("/admin/artiste/modif{id}", name="admin_artiste_modif", methods={"GET","POST"})
+     * @Route("/admin/artiste/modif/{id}", name="admin_artiste_modif", methods={"GET","POST"})
      */
     public function ajoutModifArtiste(Artiste $artiste=null, Request $request, EntityManagerInterface $manager): Response
     {
+       
         if($artiste == null){
             $artiste=new Artiste();
             $mode="ajouté";
@@ -64,14 +65,21 @@ class ArtisteController extends AbstractController
     }
 
     /**
-     * @Route("/admin/artiste/suppression{id}", name="admin_artiste_suppression", methods={"DELETE"})
+     * @Route("/admin/artiste/suppression/{id}", name="admin_artiste_suppression", methods={"GET"})
      */
     public function suppressionArtiste(Artiste $artiste, EntityManagerInterface $manager): Response
     {
 
-        $manager->remove($artiste);
-        $manager->flush();
-        $this->addFlash("success","l'artiste à bien été supprimé"); //labelle, valeur
+        $nbAlbums = $artiste->getAlbums()->count();
+
+        if ($nbAlbums > 0){
+            $this->addFlash("warning","l'artiste n'a pas pu être suprimmé car il possède $nbAlbums albume");
+        }else{
+            $manager->remove($artiste);
+            $manager->flush();
+            $this->addFlash("success","l'artiste à bien été supprimé"); //labelle, value
+        }
+
         return $this->redirectToRoute('admin_artistes');
     }
 

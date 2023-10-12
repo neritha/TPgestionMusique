@@ -3,8 +3,9 @@
 {% block title %}Gestion des artistes{% endblock %}
 
 {% block body %}
-<h1 clas="pt-2 text-center">Gestion des artistes</h1>
-<a href=" {{ path("admin_artiste_ajout")}} " class="btn btn-info">Ajouter un artiste</a>
+<h1 class="pt-2 text-center">Gestion des artistes</h1>
+
+<a href=" {{ path("admin_artiste_ajout")}} " class="btn btn-info"><i class="fas fa-user-plus"></i> Ajouter un artiste</a>
 <hr>
 
     <table class="table table-hover">
@@ -35,14 +36,15 @@
                     </p>
                 </td>
                 <td class="col-2">
-                    <a href=" {{ path('admin_artiste_modif',{'id': leArtiste.id})}} " class="btn btn-outline-success"><i class="fas fa-pencil-alt"></i></a>
-                    <a class="btn btn-outline-warning" 
+                    <a href=" {{ path('admin_artiste_modif',{'id': leArtiste.id})}} " class="btn btn-success"><i class="fa-solid fa-pen"></i></a>
+
+                    <a class="btn btn-warning" 
                     data-toggle="modal" 
                     data-target="#modalSimple"
                     data-titre="Suppresion d'un artiste"
-                    data-message="êtes-vous sur d vouloir supprimer l'artiste {{ leArtiste.nom}}"
+                    data-message="êtes-vous sur de vouloir supprimer l'artiste {{ leArtiste.nom}}"
                     data-libelleBouton="Supprimer l'artiste"
-                    data-lien=" {{ path('admin_artiste_suppression', {'id':'leArtiste.id'})}}"
+                    data-lien=" {{ path('admin_artiste_suppression', {'id': leArtiste.id})}}"
                     ><i class="fa-solid fa-trash"></i></a>
                     <!--<a href="" class="btn btn-outline-danger">OK</a>-->
                 </td>
@@ -56,10 +58,6 @@
         {{ knp_pagination_render(lesArtistes) }}
     </div>
     
-
-
-
-
 {% endblock %}
 {% block javascripts %}
     {% include "include/_modale.html.twig" %}
