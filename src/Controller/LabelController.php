@@ -50,11 +50,5 @@ class LabelController extends AbstractController
             'leLabel' => $label,
         ]));
     }
-    /*public function ficheArtiste(Artiste $artiste)
-    {
-        return $this->render('artiste/ficheArtiste.html.twig', [
-            'leArtiste' => $artiste
-        ]);
-        
-    }*/
+
 }

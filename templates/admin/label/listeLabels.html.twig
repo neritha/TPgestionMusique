@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion des labels{% endblock %}
+
+{% block body %}
+<h1 class="pt-2 text-center">Gestion des labels administration</h1>
+
+<a href=" {{ path("admin_label_ajout")}} " class="btn btn-info"><i class="fas fa-user-plus"></i> Ajouter un label</a>
+<hr>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+            <th scope="col-1">Image</th>
+            <th scope="col-2">Nom</th>
+            <th scope="col-7">Detail</th>
+            <th scope="col-2">Action</th>
+            </tr>
+        </thead>
+
+        {% for leLabel in lesLabels %}
+        {% set nbAlbums = leLabel.albums|length %}
+
+        <tbody>
+            <tr class="table-secondary">
+                <td class="col-1"><img class="avatar mx-auto d-block" style="height: auto; width: 50px; display: bloc;" src="{{leLabel.logo}}" alt=""></td>
+                <td class="col-2"> {{leLabel.nom}} </td>
+                <td class="col-7">
+                    <p class="d-flex flex-row">
+                        <span class="align-self-center badge badge-success"> {{nbAlbums}}{% if nbAlbums > 1 %} Albums {% else %} Album {% endif %} </span>
+                        <span class="align-self-center mx-3"> {% if leLabel.type == "Majeur" %} Majeur {% else %} Indépendant{% endif %} </span>
+                        <span class="align-self-center ml-auto"> {{leLabel.annee}} </span>
+                    </p>
+                    <p>
+                        {{leLabel.description|slice(0,100)|raw}} ...
+                    </p>
+                </td>
+                <td class="col-2">
+                    <a href=" {{ path('admin_label_modif',{'id': leLabel.id})}} " class="btn btn-success"><i class="fa-solid fa-pen"></i></a>
+
+                    <a class="btn btn-warning" 
+                    data-toggle="modal" 
+                    data-target="#modalSimple"
+                    data-titre="Suppresion d'un label"
+                    data-message="êtes-vous sur de vouloir supprimer le label {{ leLabel.nom}}"
+                    data-libelleBouton="Supprimer le label"
+                    data-lien=" {{ path('admin_label_suppression', {'id': leLabel.id})}}"
+                    ><i class="fa-solid fa-trash"></i></a>
+                    <!--<a href="" class="btn btn-outline-danger">OK</a>-->
+                </td>
+            </tr>
+
+        {% endfor %}
+
+        </tbody>
+    </table>
+    
+{% endblock %}
+{% block javascripts %}
+    {% include "include/_modale.html.twig" %}
+{% endblock %}

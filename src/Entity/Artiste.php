@@ -5,11 +5,17 @@ namespace App\Entity;
 use App\Repository\ArtisteRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=ArtisteRepository::class)
+ * 
+ *   @UniqueEntity(
+ *       fields = "nom",
+ *       message = "Le nom de l'artiste est déjà utiliser dans la base",
+ *   )
  */
 class Artiste
 {
@@ -28,6 +34,12 @@ class Artiste
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\Length(
+     *       min = 2,
+     *       max = 255,
+     *       minMessage = "La limite minimum est de {{ limit }} characters",
+     *       maxMessage = "La limite maximum est de {{ limit }} characters"
+     *   )
      */
     private $description;
 

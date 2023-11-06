@@ -28,7 +28,9 @@ class ArtisteType extends AbstractType
             ])
             ->add('description', TextareaType::class)
             ->add('site', UrlType::class)
-            ->add('image', TextType::class)
+            ->add('image', TextType::class, [
+                'required'=>false // pour que champ en questio ne soit pas requi
+            ])
             ->add('type', ChoiceType::class,[
                 "choices"=>[
                     "solo"=>0,
