@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion des styles{% endblock %}
+
+{% block body %}
+<h1 class="pt-2 text-center">Gestion des styles</h1>
+
+
+<a href=" {{ path("admin_style_ajout")}} " class="btn btn-info"><i class="fas fa-user-plus"></i> Ajouter un style</a>
+
+
+<hr>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+            <th scope="col-3">Couleur</th>
+            <th scope="col-5">Nom</th>
+            <th scope="col-2"></th>
+            <th scope="col-2">Actions</th>
+            </tr>
+        </thead>
+
+        {% for leStyle in lesStyles %}
+        {% set nbAlbums = leStyle.albums|length %}
+
+        <tbody>
+            <tr class="table-secondary">
+                <td class="col-3"> {{leStyle.couleur}} </td>
+                <td class="col-5"> {{leStyle.nom}} </td>
+                <td class="col-2">
+                    <p class="d-flex flex-row">
+                        <span class="align-self-center badge badge-success"> {{nbAlbums}}{% if nbAlbums > 1 %} Albums {% else %} Album {% endif %} </span>
+                    </p>
+                </td>
+                
+                <td class="col-2">
+                
+                    <a href=" {{ path('admin_style_modif',{'id': leStyle.id})}} " class="btn btn-success"><i class="fa-solid fa-pen"></i></a>
+                        
+                    <a class="btn btn-warning" 
+                    data-toggle="modal" 
+                    data-target="#modalSimple"
+                    data-titre="Suppresion d'un style"
+                    data-message="êtes-vous sur de vouloir supprimer le style {{ leStyle.nom}}"
+                    data-libelleBouton="Supprimer le style"
+                    data-lien=" {{ path('admin_artiste_suppression', {'id': leStyle.id})}}"
+                    ><i class="fa-solid fa-trash"></i></a> //video corresction style 27:48
+                    <!--<a href="" class="btn btn-outline-danger">OK</a>-->
+                </td>
+            </tr>
+
+        {% endfor %}
+
+        </tbody>
+    </table>
+    <div class="navigation mx-auto pt-4">
+        {{ knp_pagination_render(lesStyles) }}
+    </div>
+    
+{% endblock %}
+{% block javascripts %}
+    {% include "include/_modale.html.twig" %}
+{% endblock %}
