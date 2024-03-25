@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion des nationalites{% endblock %}
+
+{% block body %}
+<h1 class="pt-2 text-center">Gestion des nationalites</h1>
+
+<a href=" {{ path("admin_nationalite_ajout")}} " class="btn btn-info"><i class="fas fa-user-plus"></i> Ajouter une nationalite</a>
+<hr>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+            <th scope="col-1">Image</th>
+            <th scope="col-2">Libelle</th>
+            <th scope="col-2">Actions</th>
+            </tr>
+        </thead>
+
+        {% for laNationalite in lesNationalites %}
+
+        <tbody>
+            <tr class="table-secondary">
+                <td class="col-1"><img class="mx-auto d-block" style="height: auto; width: 50px; display: bloc;" src=" {{laNationalite.drapeau}} " alt=""></td>
+                <td class="col-2"> {{laNationalite.libelle}} </td>
+
+                </td>
+                <td class="col-2">
+                    <a href="{{ path('admin_nationalite_modif',{'id': laNationalite.id})}}" class="btn btn-success"><i class="fa-solid fa-pen"></i></a>
+
+                    <a class="btn btn-warning" 
+                    data-toggle="modal" 
+                    data-target="#modalSimple"
+                    data-titre="Suppresion d'une nationalite"
+                    data-message="êtes-vous sur de vouloir supprimer la nationalite {{ laNationalite.libelle}}"
+                    data-libelleBouton="Supprimer la nationalite"
+                    data-lien=" {{ path('admin_nationalite_suppression', {'id': laNationalite.id})}}"
+                    ><i class="fa-solid fa-trash"></i></a>
+                </td>
+            </tr>
+
+        {% endfor %}
+
+        </tbody>
+    </table>
+    <div class="navigation mx-auto pt-4">
+        {{ knp_pagination_render(lesNationalites) }}
+    </div>
+    
+{% endblock %}
+{% block javascripts %}
+    {% include "include/_modale.html.twig" %}
+{% endblock %}

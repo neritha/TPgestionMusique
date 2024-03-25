@@ -25,6 +25,18 @@
             <ul class="list-group list-group-flush">
                 <li class="list-group-item"> {% if leArtiste.type == 0 %} Artiste solo {% else %} Groupe{% endif %} </li>
                 <li class="list-group-item"> <a target="_blank" href="{{leArtiste.site}}">Site web</a> </li>
+                <li class="list-group-item">
+                
+                nationalite :  
+                
+                {% if leArtiste.nationalite %}
+                    {{leArtiste.nationalite.libelle}}
+
+                {% else %}
+                 <p>il n'y a pas de nationalite</p>
+                {% endif %}
+                
+                 </li>
             </ul>
         </div>
     </div>

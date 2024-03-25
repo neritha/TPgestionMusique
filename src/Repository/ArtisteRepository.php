@@ -48,8 +48,9 @@ class ArtisteRepository extends ServiceEntityRepository
     public function listeArtisteComplete (): ?Query //on utilise que la paginé pour tout le temps
      {
          return $this->createQueryBuilder('art')
-             ->select('art','a') 
+             ->select('art','a', 'n') 
              ->leftJoin('art.albums', 'a')
+             ->leftJoin('art.nationalite', 'n')
              ->orderBy('art.nom','ASC')
              ->getQuery()
              //->getResult()

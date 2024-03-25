@@ -4,8 +4,11 @@ namespace App\Form;
 
 use App\Entity\Artiste;
 //use Doctrine\DBAL\Types\TextType;
+use App\Entity\Nationalite;
 use Symfony\Component\Form\AbstractType;
+use App\Repository\NationaliteRepository;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -36,6 +39,12 @@ class ArtisteType extends AbstractType
                     "solo"=>0,
                     "groupe"=>1
                 ]
+            ])
+
+            ->add('nationalite', EntityType::class,[
+                'class'=>Nationalite::class,
+                'choice_label'=>'libelle',
+                'required'=>false,
             ])
             //->add('valider', SubmitType::class)
         ;

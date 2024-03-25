@@ -1,0 +1,93 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Statistiques{% endblock %}
+
+{% block body %}
+
+<h1>Statistiques des nationalites</h1>
+
+<h2>Liste des nationalites</h2>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+        <th scope="col-1">Image</th>
+        <th scope="col-2">Libelle</th>
+        <th scope="col-2">Nombre d'artiste</th>
+        </tr>
+    </thead>
+
+    {% for laNationalite in lesNationalites %}
+
+    <tbody>
+        <tr class="table-secondary">
+            <td class="col-1"><img class="avatar mx-auto d-block" style="height: auto; width: 50px; display: bloc;" src=" {{laNationalite.drapeau}} " alt=""></td>
+            <td class="col-2"> {{laNationalite.libelle}} </td>
+
+            <td class="col-2">
+
+            {{laNationalite.artistes|length}}
+            
+            {# {% if laNationalite.artistes|length > 0 %}
+                il y a des artiste qui ont cette nationalite
+            {% else %}
+            inconnu au bataillon 
+                {% endif %}  #}
+        
+            </td>
+            
+        </tr>
+
+    {% endfor %}
+
+    </tbody>
+    <div class="navigation mx-auto pt-4">
+        {{ knp_pagination_render(lesNationalites) }}
+    </div>
+</table>
+
+
+{# 
+<div>
+  <canvas id="myChart"></canvas>
+</div>
+
+
+
+
+<script>
+
+    let maListeNationalite = {{lesNationalites}}; 
+
+  const ctx = document.getElementById('myChart');
+
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: maListeNationalite,
+      datasets: [{
+        label: '# of Votes',
+        data: [12, 19, 3, 5, 2, 3],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+</script>
+
+
+
+ #}
+
+
+
+    
+
+
+{% endblock %}

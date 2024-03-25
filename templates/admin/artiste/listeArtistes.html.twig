@@ -13,6 +13,7 @@
             <tr>
             <th scope="col-1">Image</th>
             <th scope="col-2">Nom</th>
+            <th scope="col-2">Nationalite</th>
             <th scope="col-7">Detail</th>
             <th scope="col-2">Actions</th>
             </tr>
@@ -24,8 +25,24 @@
         <tbody>
             <tr class="table-secondary">
                 <td class="col-1"><img class="avatar mx-auto d-block" style="height: auto; width: 50px; display: bloc;" src="{{leArtiste.image}}" alt=""></td>
-                <td class="col-2"> {{leArtiste.nom}} </td>
-                <td class="col-7">
+                <td class="col-1"> {{leArtiste.nom}} </td>
+
+
+                <td class="col-2"> 
+                
+                {% if leArtiste.nationalite %}
+                    {{leArtiste.nationalite.libelle}}
+
+                {% else %}
+                 <p>il n'y a pas de nationalite</p>
+                {% endif %}
+                
+                
+                 </td>
+
+
+
+                <td class="col-6">
                     <p class="d-flex flex-row">
                         <span class="align-self-center badge badge-success"> {{nbAlbums}}{% if nbAlbums > 1 %} Albums {% else %} Album {% endif %} </span>
                         <span class="align-self-center mx-3"> {% if leArtiste.type == 0 %} Artiste solo {% else %} Groupe{% endif %} </span>

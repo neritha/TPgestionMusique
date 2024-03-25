@@ -6,6 +6,10 @@
         <link rel="stylesheet" href="https://bootswatch.com/4/lumen/bootstrap.min.css">
         <link rel="stylesheet" href="{{asset('css/app.css')}} ">
         <script src="https://kit.fontawesome.com/75610805ea.js" crossorigin="anonymous"></script>
+        
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+        
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
         {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
         {% block stylesheets %}
@@ -48,7 +52,11 @@
                         <a class="dropdown-item" href="{{path('admin_artistes')}}"><i class="fas fa-address-card"></i> Gestion des artistes</a>
                         <a class="dropdown-item" href="{{path('admin_labels')}}">Gestion des labels</a>
                         <a class="dropdown-item" href="{{path('admin_styles')}}">Gestion des syles</a>
+                        <a class="dropdown-item" href="{{path('admin_nationalites')}}">Gestion des nationalites</a>
                     </div>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{path('nationalites_statistiques')}}">Statistiques</a>
                 </li>
             </ul>
         </div>
